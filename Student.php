@@ -7,12 +7,15 @@
  */
 
 /**
- * Description of Student
- *
- * @author Francis Carreon
+ * Student
+ * 
+ * @author Francis Carreon - A00924988
  */
 class Student {
 
+    /**
+     * initialize properties
+     */
     function __construct() {
         $this->surname = '';
         $this->first_name = '';
@@ -20,14 +23,24 @@ class Student {
         $this->grades = array();
     }
 
+    /**
+     * @param $which   e.g. home, work  
+     * @param $address email
+     */
     function add_email($which, $address) {
         $this->emails[$which] = $address;
     }
 
+    /**
+     * @param $grade for array
+     */
     function add_grade($grade) {
         $this->grades[] = $grade;
     }
 
+    /**
+     * @return grades average 
+     */
     function average() {
         $total = 0;
         foreach ($this->grades as $value)
@@ -35,8 +48,11 @@ class Student {
         return $total / count($this->grades);
     }
 
+    /**
+     * @return student summary 
+     */
     function toString() {
-        $result = $this->first_name . ' ' . $this->surname;
+        $result = '<b>' . $this->first_name . ' ' . $this->surname . '</b>';
         $result .= ' (' . $this->average() . ")\n";
         foreach ($this->emails as $which => $what)
             $result .= $which . ': ' . $what . "\n";
